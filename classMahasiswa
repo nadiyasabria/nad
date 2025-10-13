@@ -1,0 +1,51 @@
+// Program: Mahasiswa.java
+// Menentukan kategori prestasi berdasarkan IPK
+
+class Mahasiswa {
+    // Atribut
+    String nama;
+    double ipk;
+
+    // Konstruktor
+    Mahasiswa(String n, double i) {
+        nama = n;
+        ipk = i;
+    }
+
+    // Method untuk menentukan kategori prestasi
+    String kategoriPrestasi() {
+        if (ipk >= 3.50) {
+            return "Cumlaude";
+        } else if (ipk >= 3.00) {
+            return "Sangat Baik";
+        } else if (ipk >= 2.50) {
+            return "Baik";
+        } else {
+            return "Cukup";
+        }
+    }
+
+    // Method untuk menampilkan data mahasiswa
+    void tampilkanData() {
+        System.out.println("Nama: " + nama);
+        System.out.println("IPK : " + ipk);
+        System.out.println("Kategori Prestasi: " + kategoriPrestasi());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Membuat objek Mahasiswa
+        Mahasiswa mhs1 = new Mahasiswa("Nadiya Shabriyyah", 3.72);
+        Mahasiswa mhs2 = new Mahasiswa("Budi Santoso", 2.85);
+        Mahasiswa mhs3 = new Mahasiswa("Ayu Lestari", 2.30);
+
+        // Menampilkan hasil
+        mhs1.tampilkanData();
+        System.out.println();
+        mhs2.tampilkanData();
+        System.out.println();
+        mhs3.tampilkanData();
+    }
+}
+
