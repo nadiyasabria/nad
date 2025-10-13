@@ -1,0 +1,37 @@
+// Program: PersegiPanjang.java
+// Menentukan luas dan keliling persegi panjang
+
+class PersegiPanjang {
+    // Atribut
+    double panjang;
+    double lebar;
+
+    // Konstruktor
+    PersegiPanjang(double p, double l) {
+        panjang = p;
+        lebar = l;
+    }
+
+    // Method untuk menghitung luas
+    double hitungLuas() {
+        return panjang * lebar;
+    }
+
+    // Method untuk menghitung keliling
+    double hitungKeliling() {
+        return 2 * (panjang + lebar);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Membuat objek PersegiPanjang
+        PersegiPanjang pp = new PersegiPanjang(10, 5);
+
+        // Menampilkan hasil
+        System.out.println("Panjang: " + pp.panjang);
+        System.out.println("Lebar  : " + pp.lebar);
+        System.out.println("Luas   : " + pp.hitungLuas());
+        System.out.println("Keliling: " + pp.hitungKeliling());
+    }
+}
