@@ -1,0 +1,179 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+// Struct untuk menyimpan data KTP (urutan: sesuai KTP umum)
+struct KTP {
+    string nik;
+    string nama;
+    string tempat_lahir;
+    string tgl_lahir;        // format bebas, contoh "01-01-2000"
+    string jenis_kelamin;    // "Laki-laki" / "Perempuan"
+    string gol_darah;
+    string alamat;
+    string rt_rw;
+    string kelurahan;
+    string kecamatan;
+    string agama;
+    string status_perkawinan;
+    string pekerjaan;
+    string kewarganegaraan;
+    string berlaku_hingga;
+};
+
+// Kelas untuk operasi input / output data KTP
+class KTPIO {
+public:
+    // Tambah satu KTP lewat input user (stdin)
+    void tambahDariInput(vector<KTP>& arr) {
+        KTP k;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // bersihkan newline
+        cout << "Masukkan NIK: "; getline(cin, k.nik);
+        cout << "Nama: "; getline(cin, k.nama);
+        cout << "Tempat Lahir: "; getline(cin, k.tempat_lahir);
+        cout << "Tanggal Lahir (DD-MM-YYYY): "; getline(cin, k.tgl_lahir);
+        cout << "Jenis Kelamin: "; getline(cin, k.jenis_kelamin);
+        cout << "Golongan Darah: "; getline(cin, k.gol_darah);
+        cout << "Alamat: "; getline(cin, k.alamat);
+        cout << "RT/RW: "; getline(cin, k.rt_rw);
+        cout << "Kelurahan/Desa: "; getline(cin, k.kelurahan);
+        cout << "Kecamatan: "; getline(cin, k.kecamatan);
+        cout << "Agama: "; getline(cin, k.agama);
+        cout << "Status Perkawinan: "; getline(cin, k.status_perkawinan);
+        cout << "Pekerjaan: "; getline(cin, k.pekerjaan);
+        cout << "Kewarganegaraan: "; getline(cin, k.kewarganegaraan);
+        cout << "Berlaku Hingga: "; getline(cin, k.berlaku_hingga);
+
+        arr.push_back(k);
+        cout << "Data berhasil ditambahkan.\n\n";
+    }
+
+    // Tampilkan semua data dalam bentuk tabel sederhana
+    void tampilkanSemua(const vector<KTP>& arr) {
+        if (arr.empty()) {
+            cout << "Tidak ada data KTP.\n";
+            return;
+        }
+
+        for (size_t i = 0; i < arr.size(); ++i) {
+            const KTP &k = arr[i];
+            cout << "---------------------------------------------\n";
+            cout << "Index: " << i << "\n";
+            cout << left << setw(20) << "NIK" << ": " << k.nik << "\n";
+            cout << left << setw(20) << "Nama" << ": " << k.nama << "\n";
+            cout << left << setw(20) << "Tempat Lahir" << ": " << k.tempat_lahir << "\n";
+            cout << left << setw(20) << "Tanggal Lahir" << ": " << k.tgl_lahir << "\n";
+            cout << left << setw(20) << "Jenis Kelamin" << ": " << k.jenis_kelamin << "\n";
+            cout << left << setw(20) << "Gol. Darah" << ": " << k.gol_darah << "\n";
+            cout << left << setw(20) << "Alamat" << ": " << k.alamat << "\n";
+            cout << left << setw(20) << "RT/RW" << ": " << k.rt_rw << "\n";
+            cout << left << setw(20) << "Kel/Desa" << ": " << k.kelurahan << "\n";
+            cout << left << setw(20) << "Kecamatan" << ": " << k.kecamatan << "\n";
+            cout << left << setw(20) << "Agama" << ": " << k.agama << "\n";
+            cout << left << setw(20) << "Status" << ": " << k.status_perkawinan << "\n";
+            cout << left << setw(20) << "Pekerjaan" << ": " << k.pekerjaan << "\n";
+            cout << left << setw(20) << "Kewarganegaraan" << ": " << k.kewarganegaraan << "\n";
+            cout << left << setw(20) << "Berlaku Hingga" << ": " << k.berlaku_hingga << "\n";
+        }
+        cout << "---------------------------------------------\n";
+    }
+
+    // Muat data sampel (ganti isinya dengan data anggota kelompokmu)
+    void muatDataSampel(vector<KTP>& arr) {
+        arr.clear();
+        KTP a;
+        a.nik = "3201010101010001";
+        a.nama = "Ahmad Santoso";
+        a.tempat_lahir = "Jakarta";
+        a.tgl_lahir = "01-01-2000";
+        a.jenis_kelamin = "Laki-laki";
+        a.gol_darah = "O";
+        a.alamat = "Jl. Merdeka No.1";
+        a.rt_rw = "001/002";
+        a.kelurahan = "Gambir";
+        a.kecamatan = "Gambir";
+        a.agama = "Islam";
+        a.status_perkawinan = "Belum Kawin";
+        a.pekerjaan = "Mahasiswa";
+        a.kewarganegaraan = "WNI";
+        a.berlaku_hingga = "Seumur Hidup";
+        arr.push_back(a);
+
+        KTP b;
+        b.nik = "3201010101010002";
+        b.nama = "Budi Prasetyo";
+        b.tempat_lahir = "Bandung";
+        b.tgl_lahir = "05-05-1999";
+        b.jenis_kelamin = "Laki-laki";
+        b.gol_darah = "A";
+        b.alamat = "Jl. Merpati No.2";
+        b.rt_rw = "003/004";
+        b.kelurahan = "Cibeunying";
+        b.kecamatan = "Cicendo";
+        b.agama = "Kristen";
+        b.status_perkawinan = "Belum Kawin";
+        b.pekerjaan = "IT";
+        b.kewarganegaraan = "WNI";
+        b.berlaku_hingga = "Seumur Hidup";
+        arr.push_back(b);
+
+        KTP c;
+        c.nik = "3201010101010003";
+        c.nama = "Citra Lestari";
+        c.tempat_lahir = "Yogyakarta";
+        c.tgl_lahir = "10-10-2001";
+        c.jenis_kelamin = "Perempuan";
+        c.gol_darah = "B";
+        c.alamat = "Jl. Malioboro No.3";
+        c.rt_rw = "005/006";
+        c.kelurahan = "Gedongtengen";
+        c.kecamatan = "Gondomanan";
+        c.agama = "Hindu";
+        c.status_perkawinan = "Belum Kawin";
+        c.pekerjaan = "Mahasiswa";
+        c.kewarganegaraan = "WNI";
+        c.berlaku_hingga = "Seumur Hidup";
+        arr.push_back(c);
+
+        cout << "Data sampel dimuat (" << arr.size() << " record). Ganti dengan data anggota kelompokmu jika perlu.\n\n";
+    }
+};
+
+int main() {
+    vector<KTP> daftar;
+    KTPIO io;
+    int pilihan;
+
+    while (true) {
+        cout << "=== PROGRAM DATA KTP (STRUCT + CLASS) ===\n";
+        cout << "1. Muat data sampel (contoh anggota kelompok)\n";
+        cout << "2. Tambah data KTP dari input\n";
+        cout << "3. Tampilkan semua data\n";
+        cout << "4. Keluar\n";
+        cout << "Pilih (1-4): ";
+        if (!(cin >> pilihan)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Pilihan tidak valid.\n";
+            continue;
+        }
+
+        if (pilihan == 1) {
+            io.muatDataSampel(daftar);
+        } else if (pilihan == 2) {
+            io.tambahDariInput(daftar);
+        } else if (pilihan == 3) {
+            io.tampilkanSemua(daftar);
+        } else if (pilihan == 4) {
+            cout << "Keluar.\n";
+            break;
+        } else {
+            cout << "Pilihan tidak dikenal.\n";
+        }
+    }
+
+    return 0;
+}
