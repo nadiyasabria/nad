@@ -1,0 +1,89 @@
+nama:Produk.java
+
+public class Produk {
+    // Atribut dibuat private
+    private String kodeProduk;
+    private String namaProduk;
+    private double harga;
+
+    // Constructor default
+    public Produk() {
+        this.kodeProduk = "P000";
+        this.namaProduk = "Unknown";
+        this.harga = 0;
+    }
+
+    // Constructor berparameter
+    public Produk(String kodeProduk, String namaProduk, double harga) {
+        this.kodeProduk = kodeProduk;
+        this.namaProduk = namaProduk;
+        this.harga = harga;
+    }
+
+    // Getter dan Setter untuk kodeProduk
+    public String getKodeProduk() {
+        return kodeProduk;
+    }
+
+    public void setKodeProduk(String kodeProduk) {
+        this.kodeProduk = kodeProduk;
+    }
+
+    // Getter dan Setter untuk namaProduk
+    public String getNamaProduk() {
+        return namaProduk;
+    }
+
+    public void setNamaProduk(String namaProduk) {
+        this.namaProduk = namaProduk;
+    }
+
+    // Getter dan Setter untuk harga
+    public double getHarga() {
+        return harga;
+    }
+
+    // Setter dengan validasi harga harus lebih dari 0
+    public void setHarga(double harga) {
+        if (harga > 0) {
+            this.harga = harga;
+        } else {
+            System.out.println("Harga tidak boleh kurang atau sama dengan 0!");
+        }
+    }
+
+    // Method untuk menampilkan info produk
+    public void tampilkanInfo() {
+        System.out.println("Kode Produk : " + kodeProduk);
+        System.out.println("Nama Produk : " + namaProduk);
+        System.out.println("Harga       : " + harga);
+        System.out.println();
+    }
+}
+
+
+
+nama: Tester.java
+
+public class Tester {
+    public static void main(String[] args) {
+        // Objek pertama: menggunakan constructor default
+        Produk produk1 = new Produk();
+
+        // Objek kedua: menggunakan constructor berparameter
+        Produk produk2 = new Produk("P101", "Headset Bluetooth", 150000);
+
+        // Tampilkan info kedua produk
+        System.out.println("=== DATA PRODUK 1 ===");
+        produk1.tampilkanInfo();
+
+        System.out.println("=== DATA PRODUK 2 ===");
+        produk2.tampilkanInfo();
+
+        // Uji setter harga
+        System.out.println("Uji ubah harga produk 1:");
+        produk1.setHarga(-50000);  // tidak valid
+        produk1.setHarga(125000);  // valid
+        produk1.tampilkanInfo();
+    }
+}
